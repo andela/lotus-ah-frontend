@@ -75,6 +75,9 @@ typings/
 # FuseBox cache
 .fusebox/
 
+# build folder
+build
+
 # misc
 .vscode
 .DS_Store

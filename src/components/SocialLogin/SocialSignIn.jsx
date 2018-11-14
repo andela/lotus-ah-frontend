@@ -1,5 +1,9 @@
+// react libraries
 import React, { Fragment } from 'react';
 
+/**
+ * @desc renders social login group
+ */
 const SocialSignIn = () => (
   <Fragment>
     <div className='social-wrap text-center'>

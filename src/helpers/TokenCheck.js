@@ -41,7 +41,19 @@ const auth = {
       return false;
     }
     return true;
-  }
+  },
+  
+  decodeToken(token) {
+    let decoded = {};
+    try {
+      decoded = jwt.verify(token, process.env.SECRET);
+    } catch (error) {
+      decoded = {
+        error: error.message,
+      };
+    }
+    return decoded;
+  },
 };
 
 export default auth;

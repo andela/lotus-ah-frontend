@@ -18,14 +18,17 @@ const LoginTypeSelector = props => (
         <LoginType
             className={'fab fa-facebook'}
             loginTypeName={'Facebook'}
+            href={process.env.FACEBOOK_URL}
         />
         <LoginType
             className={'fab fa-twitter'}
             loginTypeName={'Twitter'}
+            href={process.env.TWITTER_URL}
         />
         <LoginType
             className={'fab fa-google'}
             loginTypeName={'Google'}
+            href={process.env.GOOGLE_URL}
         />
         <div className="sign-up-card facebook">
             <a

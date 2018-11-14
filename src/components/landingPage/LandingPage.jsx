@@ -16,12 +16,34 @@ import RecentPosts from './RecentPost';
 import Tags from './Articles/Tags';
 import Footer from '../reusables/Footer';
 
+// third party library
+import qs from 'query-string';
+
+// helpers
+import TokenCheck from  '../../helpers/TokenCheck'
+
 
 /**
- * @desc renders Landing
+ * @desc renders Landing page
  */
 class LandingPage extends Component {
+  
+  checkLogin = () => {
+    const parsed = qs.parse(location.search);
+    const { token } = parsed;
+    if (token !== undefined) {
+      const user = TokenCheck.decodeToken(token);
+      this.props.homeLogin.user = user.returnedUser.user;
+      this.props.homeLogin.isAuth = true;
+      localStorage.setItem(
+        'user',
+        JSON.stringify(user.returnedUser.user)
+      );
+     }
+  }
+
   render() {
+    this.checkLogin();
     const filterArticle = [...Array(4)].map((el, i) => <FilterArticle key={i}/>);
     const authUser = this.props.homeLogin.user;
     const user = JSON.parse(localStorage.getItem('user'));
