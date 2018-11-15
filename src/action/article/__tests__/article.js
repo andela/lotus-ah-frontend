@@ -39,7 +39,7 @@ describe('Actions related with Articles', () => {
 
 
   it('Article is created succefully', () => {
-    mock.onPost('https://lotus-ah-staging.herokuapp.com/api/v1/articles', fetchedArticle, options)
+    mock.onPost(`${process.env.SERVER_URL}/api/v1/articles`, fetchedArticle, options)
       .reply(201, {
         fetchedArticle,
         status: 'success',

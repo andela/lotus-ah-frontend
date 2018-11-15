@@ -27,7 +27,7 @@ describe('Actions related with signup', () => {
     mock.reset();
   });
   it('User signup is successful', () => {
-    mock.onPost('http://localhost:5000/api/v1/users?callBack=http://localhost:8080/verifyEmail')
+    mock.onPost(`${process.env.SERVER_URL}/api/v1/users?callBack=http://localhost:8080/verifyEmail`)
       .reply(200, {
         token: 'victorugwueze@gmail.com',
         status: 'success',
@@ -54,7 +54,7 @@ describe('Actions related with signup', () => {
   });
 
   it('User login is unsuccessful', () => {
-    mock.onPost('http://localhost:5000/api/v1/users?callBack=http://localhost:8080/verifyEmail')
+    mock.onPost(`${process.env.SERVER_URL}/api/v1/users?callBack=http://localhost:8080/verifyEmail`)
       .reply(400, {
         status: 'failed',
         message

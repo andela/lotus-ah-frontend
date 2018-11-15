@@ -54,6 +54,7 @@ class Signup extends Component {
                             <h1 className="form-title">Sign up</h1>
                             <LoginTypeSelector
                                 onClick={this.openModal}
+                                environment={process.env}
                             />
                         </div>
                         <div className="form-footer">

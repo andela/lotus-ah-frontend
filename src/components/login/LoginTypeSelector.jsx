@@ -13,7 +13,8 @@ import LoginType from './LoginType';
  * @param {object} props
  * @return {object} LoginTypeSelector
 */
-const LoginTypeSelector = props => (
+const LoginTypeSelector = props => {
+    return (
     <div className="sign-up-card-wrap text-left">
         <LoginType
             className={'fab fa-facebook'}
@@ -39,7 +40,8 @@ const LoginTypeSelector = props => (
             </a>
         </div>
     </div>
-);
+    );
+};
 
 LoginTypeSelector.propTypes = {
   onClick: PropTypes.func

@@ -28,7 +28,7 @@ describe('Actions related with user update', () => {
     mock.reset();
   });
   it('Verify User is successful', () => {
-    mock.onGet(`http://localhost:5000/api/v1/users?token=${token}`)
+    mock.onGet(`${process.env.SERVER_URL}/api/v1/users?token=${token}`)
       .reply(200, {
         user: {
           email: 'victorugwueze@gmail.com',
@@ -57,7 +57,7 @@ describe('Actions related with user update', () => {
   });
 
   it('Verify user is unsuccessful', () => {
-    mock.onGet(`http://localhost:5000/api/v1/users?token=${token}`)
+    mock.onGet(`${process.env.SERVER_URL}/api/v1/users?token=${token}`)
       .reply(400, {
         error: {},
       });

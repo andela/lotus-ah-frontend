@@ -4,6 +4,8 @@ import thunk from 'redux-thunk';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
+// import dotenv from 'dotenv';
+
 // actionType
 import {
   LOGIN_SUCCESS,
@@ -17,6 +19,7 @@ import {
   userLoginRequest,
 } from '../login';
 
+// dotenv.config();
 const user = { id: 1, roleId: 2 };
 const message = 'Password required.';
 const middlewares = [thunk];

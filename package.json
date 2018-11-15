@@ -8,7 +8,7 @@
     "start": "node app.js",
     "build": "babel-node ./node_modules/webpack/bin/webpack.js --config webpack.config.prod.js",
     "start:dev": "babel-node ./node_modules/webpack-dev-server/bin/webpack-dev-server --config webpack.config.dev.js --hot --color --open",
-    "test": "SERVER_URL=http://localhost:5000 NODE_ENV=test jest",
+    "test": " NODE_ENV=test jest",
     "test:watch": "jest --watch",
     "test:update": "jest -u",
     "test:coverage": "jest --verbose --coverage"
@@ -28,7 +28,8 @@
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|scss)$": "identity-obj-proxy"
-    }
+    },
+    "setupTestFrameworkScriptFile": "<rootDir>/src/test-setup.js"
   },
   "repository": {
     "type": "git",

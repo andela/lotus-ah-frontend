@@ -29,7 +29,7 @@ describe('Actions related with user update', () => {
     mock.reset();
   });
   it('User update is successful', () => {
-    mock.onPut('http://localhost:5000/api/v1/users')
+    mock.onPut(`${process.env.SERVER_URL}/api/v1/users`)
       .reply(200, {
         updateUser: {
           email: 'victorugwueze@gmail.com',
@@ -65,7 +65,7 @@ describe('Actions related with user update', () => {
   });
 
   it('User update is unsuccessful', () => {
-    mock.onPut('http://localhost:5000/api/v1/users')
+    mock.onPut(`${process.env.SERVER_URL}/api/v1/users`)
       .reply(400, {
         status: 'failed',
         message
