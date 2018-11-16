@@ -13,12 +13,6 @@ module.exports = merge(common, {
   devtool: 'eval-source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin({
-      // 'process.env': {
-      //   NODE_ENV: JSON.stringify('development'),
-      //   SERVER_URL: JSON.stringify('http://localhost:5000'),
-      // },
-    }),
   ],
   module: {
     rules: [

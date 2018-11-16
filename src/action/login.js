@@ -56,7 +56,7 @@ export function clearError() {
 
 export const userLoginRequest = userData => (dispatch) => {
   dispatch(loginLoading(true));
-  return axios.post(`${process.env.SERVER_URL}/api/v1/login`, userData)
+  return axios.post('https://lotus-ah-staging.herokuapp.com/api/v1/login', userData)
     .then((userPayload) => {
       dispatch(success());
       dispatch(authenticateUser(userPayload.data.user));

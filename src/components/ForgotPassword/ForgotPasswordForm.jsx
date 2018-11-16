@@ -5,7 +5,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 // components
-import ReuseableInput from '../reusables/ReuseableInput';
+import ReuseableInput from '../reusables/input/ReuseableInput';
 
 /**
  * @param {func} event

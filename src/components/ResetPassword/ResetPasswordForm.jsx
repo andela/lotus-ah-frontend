@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 // component
-import ReuseableInput from '../reusables/ReuseableInput';
+import ReuseableInput from '../reusables/input/ReuseableInput';
 
 /**
  * @desc renders resetpassword form
