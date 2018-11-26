@@ -7,22 +7,23 @@ import MockAdapter from 'axios-mock-adapter';
 
 // Import Action types
 import {
-  FETCH_SINGLE_ARTICLE_SUCCESS,
-  FETCH_SINGLE_ARTICLE_REQUEST
+  PUBLISH_ARTICLE_FAILURE,
+  PUBLISH_ARTICLE_SUCCESS,
+  PUBLISH_ARTICLE_REQUEST
 
-} from '../../../../actionTypes/article';
+} from '../../../actionTypes/article';
 
 // action
-import fetchSingleArticle from '../fetchSingleArticle';
+import
+createNewArticle
+  from '../createNewArticle';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 const mock = new MockAdapter(axios);
 
 const verificationToken = 'authorshaven';
-const Articles = {
-  title: 'The article check', body: '<p>The art of fighting</p>'
-};
+const fetchedArticle = { title: 'First Article', body: ' It has been a long time i want to create', description: 'This is the description' };
 const options = {
   headers: {
     'Content-Type': 'application/json;charset=UTF-8',
@@ -30,33 +31,36 @@ const options = {
   }
 };
 
-const slug = 'The-article-check-39ba4b81-36ee-48f9-a607-d429933a36b4';
 
-describe('Actions related with viewing an Article', () => {
+describe('Actions related with Articles', () => {
   afterEach(() => {
     mock.reset();
   });
 
 
-  it('Get single article succefully', () => {
-    mock.onGet(`http://localhost:5000/api/v1/articles/${slug}`, options)
+  it('Article is created succefully', () => {
+    mock.onPost('https://lotus-ah-staging.herokuapp.com/api/v1/articles', fetchedArticle, options)
       .reply(201, {
-        Articles,
-        status: 'SUCCESS',
+        fetchedArticle,
+        status: 'success',
       });
 
     const mockedActions = [
       {
-        type: FETCH_SINGLE_ARTICLE_REQUEST,
+        type: PUBLISH_ARTICLE_REQUEST,
+        payload: fetchedArticle,
       },
       {
-        type: FETCH_SINGLE_ARTICLE_SUCCESS,
-        payload: Articles
+        type: PUBLISH_ARTICLE_SUCCESS,
+        payload: fetchedArticle
+      },
+      {
+        type: PUBLISH_ARTICLE_FAILURE,
       },
     ];
 
     const store = mockStore({ publishedArticle: {} });
-    return store.dispatch(fetchSingleArticle(slug))
+    return store.dispatch(createNewArticle(fetchedArticle))
       .then(() => {
         expect(store.getActions()[0]).toEqual(mockedActions[0]);
       });

@@ -11,6 +11,9 @@ import {
   LOGOUT_USER
 }
   from '../actionTypes/auth';
+import {
+  UPDATE_USER_PROFILE_SUCCESS
+} from '../actionTypes/userProfile';
 
 
 /**
@@ -32,6 +35,11 @@ const authReducer = (state = initialState.auth, action) => {
         ...state,
         user: {},
         isAuth: false,
+      };
+    case UPDATE_USER_PROFILE_SUCCESS:
+      return {
+        ...state,
+        user: { ...action.payload.user },
       };
     default:
       return {

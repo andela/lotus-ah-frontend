@@ -19,6 +19,10 @@ const fetchProfileFailure = error => ({
   payload: error,
 });
 
+const clearUpdateProfile = () => ({
+  type: types.UPDATE_CLEAR,
+});
+
 const fetchUserProfile = username => (dispatch) => {
   const url = process.env.SERVER_URL || '';
   dispatch(fetchProfileRequest(true));
@@ -29,14 +33,15 @@ const fetchUserProfile = username => (dispatch) => {
       'x-access-token': `${verificationToken}`,
     },
   };
-  return http
-    .get(`${url}/api/v1/profiles/${username}`, options)
+  return http.get(`${url}/api/v1/profiles/${username}`, options)
     .then((response) => {
       dispatch(fetchProfileSuccess(response.data));
+      dispatch(clearUpdateProfile());
+      return true;
     })
     .catch((err) => {
       dispatch(fetchProfileFailure(err.response.data.message));
     });
 };
 
-export { fetchUserProfile };
+export default fetchUserProfile;

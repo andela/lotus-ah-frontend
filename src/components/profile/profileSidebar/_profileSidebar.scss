@@ -76,10 +76,10 @@
       background-color: $white;
     }
 
-    .fullname {
+    .name {
       font-size: $book-font-size;
       font-weight: 600;
-      margin-bottom: 0;
+      margin-bottom: 1rem;
     }
 
     .username {
@@ -91,7 +91,8 @@
 
     .textarea {
       margin: 0;
-      padding-top: 0;
+      line-height: 1.5;
+      font-weight: 400;
     }
   }
 

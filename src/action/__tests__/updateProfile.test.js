@@ -8,34 +8,26 @@ import MockAdapter from 'axios-mock-adapter';
 import * as types from '../../actionTypes/userProfile';
 
 // action
-import fetchUserProfile from '../userProfile';
+import updateProfile from '../updateProfile';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 const mock = new MockAdapter(http);
 
-const verificationToken = 'authorshaven';
 const profile = {
   email: 'princegoziem@gmail.com', firstname: 'Prince'
 };
 
-const options = {
-  headers: {
-    'Content-Type': 'application/json;charset=UTF-8',
-    'x-access-token': `${verificationToken}`
-  }
-};
+const userId = 1;
 
-const userId = 41;
-
-describe('Actions related with viewing a user profile', () => {
+describe('Actions related with updating a user profile', () => {
   afterEach(() => {
     mock.reset();
   });
 
 
-  it('Fetch user profile succefully', () => {
-    mock.onGet(`http://localhost:5000/api/v1/profiles/${userId}`, options)
+  it('Update user profile succefully', () => {
+    mock.onPut(`http://localhost:5000/api/v1/profiles/${userId}`)
       .reply(200, {
         profile,
         status: 'success',
@@ -43,17 +35,17 @@ describe('Actions related with viewing a user profile', () => {
 
     const mockedActions = [
       {
-        type: types.FETCH_USER_PROFILE_LOADING,
+        type: types.UPDATE_USER_PROFILE_LOADING,
         payload: true,
       },
       {
-        type: types.FETCH_USER_PROFILE_SUCCESS,
+        type: types.UPDATE_USER_PROFILE_SUCCESS,
         payload: profile,
       },
     ];
 
     const store = mockStore({ userProfile: {} });
-    return store.dispatch(fetchUserProfile(userId))
+    return store.dispatch(updateProfile(profile, userId))
       .then(() => {
         expect(store.getActions()[0]).toEqual(mockedActions[0]);
       });

@@ -17,6 +17,43 @@
         top: -6.5rem;
         left: 2rem;
         border: 4px solid $white;
+        overflow: hidden;
+
+        .profile-image {
+          display: none;
+        }
+
+        .img-fluid {
+          position: absolute;
+        }
+
+        .img-fluid--hide {
+          display: none;
+        }
+      }
+      
+      .thumbnail-olay {
+        .thumbnail-olay--inner {
+          @include flex-center();
+          position: absolute;
+          border: 4px solid $primary;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          display: none;
+  
+          .far {
+            font-size: 3rem;
+            color: $white;
+            cursor: pointer;
+          }
+
+        }
+
+        &:hover > .thumbnail-olay--inner {
+          display: flex;
+          background-color: rgba(0, 0, 0, 0.512);
+        }
       }
     }
 
@@ -102,6 +139,13 @@
           border: 1px solid $dark;
           color:  $dark;
           margin-right: 1rem;
+        }
+
+        .loader {
+          position: absolute;
+          right: -3rem;
+          top: 50%;
+          transform: translate(50%);
         }
       }
     }

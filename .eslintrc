@@ -33,6 +33,7 @@
   },
     "rules": {
       "one-var": 0,
+      "arrow-body-style": ["error", "as-needed"],
       "one-var-declaration-per-line": 0,
       "new-cap": 0,
       "consistent-return": 0,
