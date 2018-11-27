@@ -129,6 +129,7 @@ class ViewArticle extends Component {
                   author={users}
                   articleSlug={slug}
                   loggedUser={user}
+                  slug={this.props.match.params.slug}
                 />
               {userId === user.id && (
                 <div className='l-ah-edit-article'>

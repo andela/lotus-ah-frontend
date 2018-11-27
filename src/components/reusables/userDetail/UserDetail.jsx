@@ -7,6 +7,7 @@ import propTypes from 'prop-types';
 
 // component
 import Button from '../button/Button';
+import Report from '../../../containers/report/Report';
 
 // helpers
 import updateFollowView from '../../../helpers/follow/updateFollowView';
@@ -22,7 +23,8 @@ const UserDetail = ({
   userId,
   following,
   followingAction,
-  user
+  user,
+  slug
 }) => {
   const { text, action } = updateFollowView(followingAction, following);
   return (
@@ -52,9 +54,7 @@ const UserDetail = ({
             )}
             </div>
             {user.id !== userId && followingAction.progress === 'done' && (
-            <div className='l-ah-report'>
-              <Button type='report-btn' text='Report' />
-            </div>
+              <Report slug={slug}/>
             )}
           </div>
         </div>
@@ -69,7 +69,8 @@ UserDetail.propTypes = {
   userId: propTypes.number,
   following: propTypes.array,
   followingAction: propTypes.object,
-  user: propTypes.object
+  user: propTypes.object,
+  slug: propTypes.string
 };
 
 export default UserDetail;
