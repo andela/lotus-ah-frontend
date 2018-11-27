@@ -85,8 +85,7 @@ export const fetchSingleTag = tagName => (dispatch) => {
   };
 
   return http.get(`http://localhost:5000/api/v1/search/tag/${tagName}`, options).then((response) => {
-    console.log('RESPONSE', response);
-    dispatch(fetchTagSuccess(response.data));
+    dispatch(fetchTagSuccess(response.data))
   })
     .catch((err) => {
       dispatch(fetchTagFailure(err.response));
