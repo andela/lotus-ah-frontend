@@ -20,6 +20,7 @@ import search from './search';
 import likeOrDislikeArticle from './article/likeOrDislike';
 import follow from './follow/follow';
 import updateArticleReducer from './article/updateArticle';
+import report from './report';
 
 /**
  * @desc combines all the reducers
@@ -42,5 +43,6 @@ export default combineReducers({
   search,
   likeOrDislikeArticle,
   follow,
-  updateArticleReducer
+  updateArticleReducer,
+  report
 });

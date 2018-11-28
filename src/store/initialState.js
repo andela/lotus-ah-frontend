@@ -74,7 +74,12 @@ const initialState = {
       followingCount: 0,
     },
     progress: undefined,
-  }
+  },
+  reports: {
+    posting: false,
+    message: '',
+    error: ''
+  },
 };
 
 export default initialState;
