@@ -51,12 +51,12 @@ const EditorsPick = () => (
             </div>
             <div className="col-md-5">
               <div className="l-ah-sm-card-wrap">
-              {dummyArticle.getListArticle(
+              {/* {dummyArticle.getListArticle(
                 dummyArticle.recentTitle,
                 dummyArticle.recentBodySmall,
                 dummyArticle.recentImage,
                 4
-              )}
+              )} */}
               </div>
             </div>
           </div>

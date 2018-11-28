@@ -1,6 +1,9 @@
 // react libraries
 import React from 'react';
 
+// third-party libraries
+import { Link } from 'react-router-dom';
+
 // components
 import Article from '../../../reusables/article/Article';
 import FeatureImage from '../../../reusables/article/FeatureImage';
@@ -10,8 +13,8 @@ import ArticleContent from '../../../reusables/article/ArticleContent';
 
 const dummmy = {
   recentTitle: <h5>The origin of photography,..</h5>,
-  recentBodySmall: `I just decided that I was going to click everywhere in order to get...`,
-  bookmarkBody: `I just decided that I was going...`,
+  recentBodySmall: 'I just decided that I was going to click everywhere in order to get...',
+  bookmarkBody: 'I just decided that I was going...',
   recentImage: '/images/smallblog.png',
   editorsPick: `I just decided that I was going to click everywhere
   in order to get around this because I wanted to use the
@@ -20,25 +23,21 @@ const dummmy = {
    and simply turned off the time limit, giving her free reign to look up anything that interested her...`,
 
   /**
-    *@param {string} title
-    *@param {string} body
-    *@param {string} image
+    *@param {string} articles
     * @memberof LandingPage
     * @return {Array} dummyArtciles
     */
-  getListArticle: (title, body, image, num) => {
-    const articleList = [...Array(num)].map((el, i) => (
-    <Article key={i}>
+  getListArticle: (articles) => {
+    const articleList = articles.map((article, i) => (
+   <Link key={i} to={`/viewarticle/${article.slug}/`}><Article>
       <div className="l-ah-sm-card d-flex">
             <FeatureImage
-              src={image}
-              className="img-fluid"
-              alt=""
+              imageUrl={article.imageUrl}
             />
             <figcaption>
             <ArticleContent
-              titleElement={title}
-              bodyElement={ body }
+              titleElement={article.title}
+              bodyElement={ article.description }
             />
             <ArticleDetails
               type="details-sm"
@@ -51,6 +50,7 @@ const dummmy = {
           </figcaption>
     </div>
   </Article>
+  </Link>
     ));
     return articleList;
   }
