@@ -33,10 +33,10 @@ const HeroBlog = ({ article }) => (
           />
           <ArticleDetails
             type="details"
-            readTime="5 min"
-            publishedDate="5 Nov"
+            readTime={article.timeToRead}
+            publishedDate={article.createdAt}
             authorThumbnail=""
-            authorUsername="Mindsworth"
+            authorUsername={article.user.username}
           />
         </figcaption>
       </Link>

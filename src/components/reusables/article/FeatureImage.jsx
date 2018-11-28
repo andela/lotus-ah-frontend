@@ -9,22 +9,13 @@ import PropTypes from 'prop-types';
  * @return image
 */
 const FeatureImage = ({
-  src,
-  className,
-  alt
+  imageUrl
 }) => (
-  <figure>
-    <img
-    className={className}
-    src={src}
-    alt={alt}/>
-  </figure>
+  <figure style={{ background: `url(${imageUrl}) no-repeat center center` }} />
 );
 
 FeatureImage.propTypes = {
-  src: PropTypes.string.isRequired,
-  className: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired
+  imageUrl: PropTypes.string,
 };
 
 export default FeatureImage;

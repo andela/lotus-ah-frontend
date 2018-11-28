@@ -105,8 +105,8 @@ export const getAllTags = () => (dispatch) => {
       'x-access-token': `${verficationToken}`,
     },
   };
-
-  return http.post(`${BASE_URL}/alltags`, options).then((response) => {
+const url = process.env.SERVER_URL || '';
+  return http.post(`${url}/alltags`, options).then((response) => {
     dispatch(fetchTagSuccess(response.data));
   })
     .catch((err) => {

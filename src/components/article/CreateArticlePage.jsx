@@ -90,7 +90,7 @@ class CreateArticlePage extends Component {
    const tagName = event.target.value;
    const convertedTagName = tagName.trim().toLowerCase();
    if (tags.length <= 4) {
-     if (event.keyCode === 13) {
+     if (event.keyCode === 13 || event.keyCode === 32) {
        if (convertedTagName.length > 2) {
          if (tags.includes(convertedTagName) === false) {
            const currentTags = [...tags, convertedTagName];
@@ -279,7 +279,7 @@ class CreateArticlePage extends Component {
                   value={this.state.article.description}
                 />
             </div>
-            <p>Tags will help readers to know what your story is about. Add or Change Tags(max 5)</p>
+            <p>Tags will help readers to know what your story is about. Press ENTER to add Tags (max 5)</p>
             <SearchTag
               tags={this.state.tags}
               handleEnterKey={this.handleEnterKey}

@@ -2,7 +2,6 @@
 import React from 'react';
 
 // third-party libraries
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 
@@ -10,34 +9,31 @@ import PropTypes from 'prop-types';
  * @desc renders Carousel item
  * @return carousel item
 */
-const CarouselItem = ({ article }) => (
- <Link to={`/viewarticle/${article.slug}`}>
-  <div className="slide-card article-link">
-    <div className="scale">
-      <figure>
-        <img className="img-fluid" src={article.imageUrl} alt="mdblog image"/>
-      </figure>
-    </div>
+const CarouselItem = ({ article, to }) => (
+  <div className="slide-card">
+    <figure style={{ background: `url(${article.imageUrl}) no-repeat center center` }} />
     <figcaption>
-      <h5>{article.title}</h5>
-      <p>
-      {article.description}
-      </p>
+      <a href={ to }>
+        <h5>{article.title}</h5>
+        <p>
+        {article.description}
+        </p>
+      </a>
       <div className="details-sm d-flex justify-content-flex-start align-items-center">
         <div>
           <div className="username">{article.user.username}</div>
         </div>
         <div className="notice d-flex justify-content-flex-start align-items-center">
           <div className="date">{article.createdAt}</div>
-          <div className="read-time">{article.timeToRead}</div>
+          <div className="read-time">{ `${article.timeToRead} read` }</div>
         </div>
       </div>
     </figcaption>
   </div>
-  </Link>
 );
 
 CarouselItem.propTypes = {
-  article: PropTypes.object
+  article: PropTypes.object,
+  to: PropTypes.string
 };
 export default CarouselItem;

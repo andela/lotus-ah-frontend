@@ -74,6 +74,12 @@ const initialState = {
       followingCount: 0,
     },
     progress: undefined,
+  },
+  listArticle: {
+    articles: []
+  },
+  articleTags: {
+    popularTags: []
   }
 };
 

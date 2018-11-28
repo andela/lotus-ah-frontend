@@ -15,7 +15,7 @@ import initialState from '../../../store/initialState';
  * @desc login reducer
  * @returns {object} type
  */
-const listArticle = (state = initialState.listArticle, action) => {
+const listTags = (state = initialState.articleTags, action) => {
   switch (action.type) {
     case GET_POPULAR_TAGS:
       return {
@@ -24,16 +24,16 @@ const listArticle = (state = initialState.listArticle, action) => {
     case GET_POPULAR_TAGS_SUCCESS:
       return {
         ...state,
-        articles: action.payload.articles
+        popularTags: action.payload.tags
       };
     case GGET_POPULAR_TAGS_FAILURE:
       return {
         ...state,
-        articles: action.message
+        message: action.message
       };
     default:
       return state;
   }
 };
 
-export default listArticle;
+export default listTags;

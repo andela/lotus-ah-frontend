@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
  */
 const Logo = ({ whiteLogo }) => (
   <Link to="/">
-    <img src={whiteLogo ? "/images/logo-white.png" : "/images/logo.png"} alt="Author's Haven Logo" />
+    <img src={whiteLogo ? "/images/Logo-white.png" : "/images/logo-black.png"} alt="Author's Haven Logo" />
   </Link>
 );
 

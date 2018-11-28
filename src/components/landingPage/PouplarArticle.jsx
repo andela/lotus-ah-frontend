@@ -29,32 +29,34 @@ const PouplarArticle = ({ article, articles }) => {
             <div className="col-md-8">
               <div className="l-ah-bg-card article-link">
              {article
-             && <Link to={{
-               pathname: `/viewarticle/${article.slug}`
-             }}>
-                <Article>
+             && <Article>
                     <FeatureImage
                       imageUrl={article.imageUrl}
                     />
-                    <ArticleContent
-                      titleElement={article && article.title}
-                      bodyElement={article && article.description}
-                    />
-                    <ArticleDetails
-                    type="details"
-                      readTime={article.timeToRead}
-                      publishedDate={article.createdAt}
-                      authorThumbnail=""
-                      authorUsername={article.user.username}
-                    />
+                    <figcaption>
+                      <Link className="link" to={{
+                        pathname: `/viewarticle/${article.slug}`
+                      }}>
+                        <ArticleContent
+                          titleElement={article && article.title}
+                          bodyElement={article && article.description}
+                        />
+                      </Link>
+                      <ArticleDetails
+                      type="details"
+                        readTime={article.timeToRead}
+                        publishedDate={article.createdAt}
+                        authorThumbnail=""
+                        authorUsername={article.user.username}
+                      />
+                    </figcaption>
                 </Article>
-                </Link>
              }
               </div>
             </div>
           <div className="col-md-4">
             <div className="l-ah-sm-card-wrap">
-            {dummyArticle.getListArticle(popular, 500)}
+              {dummyArticle.getListArticle(popular, 500)}
             </div>
           </div>
         </div>

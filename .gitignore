@@ -76,7 +76,6 @@ typings/
 .fusebox/
 
 # build folder
-build
 
 # misc
 .vscode

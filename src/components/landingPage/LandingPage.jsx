@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 
 // third party libraries
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import Moment from 'react-moment';
+import ReactHtmlParser from 'react-html-parser';
 
 // components
 import '../../../node_modules/slick-carousel/slick/slick-theme.css';
@@ -14,7 +14,6 @@ import Header from '../reusables/header/Header';
 import HeroSection from './HeroSection';
 import HeroBlog from './HeroBlog';
 import PopularArticle from './PouplarArticle';
-import FilterArticle from '../reusables/article/FilterArticle';
 import EditorsPick from './EditorsPick';
 import RecentPosts from './RecentPost';
 import Tags from './Articles/Tags';
@@ -30,6 +29,7 @@ import TokenCheck from '../../helpers/TokenCheck';
  */
 class LandingPage extends Component {
   componentDidMount = () => {
+    this.props.getPopularTags();
     this.props.listArticle();
   };
 
@@ -40,28 +40,33 @@ class LandingPage extends Component {
       const user = TokenCheck.decodeToken(token);
       this.props.homeLogin.user = user.returnedUser.user;
       this.props.homeLogin.isAuth = true;
+      localStorage.setItem('authorsHavenAuthToken', user.returnedUser.user.token);
       localStorage.setItem('user', JSON.stringify(user.returnedUser.user));
     }
   };
 
+
   render() {
-    // this.checkLogin();
-    let { articles } = this.props;
+    this.checkLogin();
+    let { articles, popularTags } = this.props;
+    console.log(popularTags);
     const { notifications, markNotificationAsRead } = this.props;
 
     if (articles.length > 0) {
       articles = articles.map((article) => {
-        const createdTime = (
+        const createdAt = (
           <Moment format="D MMM" withTitle>
             {articles && articles.createdAt}
           </Moment>);
+        const description = ReactHtmlParser(article.description);
+        const body = ReactHtmlParser(article.body);
         const { readTime } = article;
         const timeToRead = JSON.parse(readTime);
         const newArticle = {
           title: article.title,
-          body: article.body,
-          description: article.description,
-          createdAt: createdTime,
+          body,
+          description,
+          createdAt,
           timeToRead: timeToRead.time,
           imageUrl: article.imageUrl,
           user: article.users,
@@ -73,7 +78,6 @@ class LandingPage extends Component {
       });
     }
 
-    const filterArticle = [...Array(4)].map((el, i) => <FilterArticle key={i} />);
     const authUser = this.props.homeLogin.user;
     const user = JSON.parse(localStorage.getItem('user'));
     return (
@@ -95,7 +99,7 @@ class LandingPage extends Component {
           <PopularArticle article={articles[8]} articles={articles}/>
         </section>
         <section className='l-ah-4'>
-          <EditorsPick />
+          <EditorsPick article={articles[8]} articles={articles}/>
         </section>
         {/* slider carousel */}
         <section className='l-ah-5'>
@@ -105,9 +109,8 @@ class LandingPage extends Component {
           <div className='container'>
             <div className='row'>
               <div className='col-md-12'>
-                <Tags />
+                <Tags popularTags={popularTags}/>
               </div>
-              <div className='col-md-12 tag-search-body'>{filterArticle}</div>
             </div>
           </div>
         </section>
@@ -122,6 +125,10 @@ LandingPage.propTypes = {
   listArticle: PropTypes.func,
   location: PropTypes.object,
   articles: PropTypes.array,
+  getPopularTags: PropTypes.func,
+  markNotificationAsRead: PropTypes.func,
+  notifications: PropTypes.array,
+  popularTags: PropTypes.array,
 };
 
 export default LandingPage;

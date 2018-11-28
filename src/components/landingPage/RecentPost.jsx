@@ -4,7 +4,6 @@ import React, { Fragment } from 'react';
 
 // third-party libraries
 import Slider from 'react-slick';
-import { Link } from 'react-router-dom';
 
 // components
 import CarouselItem from './CarouselItem';
@@ -30,13 +29,11 @@ const sliderSettings = {
  */
 const RecentPost = ({ articles }) => {
   const lastest = articles.filter(
-    (article, index) => articles.length - index < 5 && article.id !== 1
+    (article, index) => articles.length - index < 6 && article.id !== 1
   );
   console.log(lastest);
   const recentPosts = lastest.map((article, index) => (
-    <Link key={index} to={`/viewarticle/${article.slug}`}>
-      <CarouselItem article={article} />{' '}
-    </Link>
+    <CarouselItem key={index} to={`/viewarticle/${article.slug}`} article={article} />
   ));
   return (
     <Fragment>

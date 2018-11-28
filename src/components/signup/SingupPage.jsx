@@ -9,21 +9,29 @@ import { Redirect } from 'react-router-dom';
 // components
 import SignupForm from './SignupForm';
 import LoginTypeSelector from '../login/LoginTypeSelector';
+import Logo from '../reusables/logo/Logo';
 
 
 /**
  * @class
  * @desc renders signup page
- * @param {object} props
+ * @param {object} event
  */
 class Signup extends Component {
     state = {
       isModalOpen: false,
     }
 
-    openModal = () => {
+    openModal = (event) => {
+      event.preventDefault();
       this.setState({
         isModalOpen: true
+      });
+    }
+
+    closeModal = () => {
+      this.setState({
+        isModalOpen: false
       });
     }
 
@@ -35,7 +43,6 @@ class Signup extends Component {
         right: 'auto',
         bottom: 'auto',
         padding: '0',
-        height: '39%',
         width: '30%',
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)'
@@ -54,15 +61,15 @@ class Signup extends Component {
               text: 'A verification email has been sent to your mail box'
             }}
           />
-        )
+       );
      }
-    return (
+     return (
       <Fragment>
         <div className="sign-up">
             <div className="container">
                 <div className="row auth-h d-flex align-items-center">
                 <div className="col-md-6 offset-md-3 text-center login-wrap">
-                   <img src="/images/logo.png" />
+                   <Logo/>
                     <div className="row">
                     <div className="col-md-8 offset-md-2">
                         <div className="form-wrap">

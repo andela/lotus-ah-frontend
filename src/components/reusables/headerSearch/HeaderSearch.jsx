@@ -24,17 +24,24 @@ const history = createBrowserHistory();
  */
 class HeaderSearch extends Component {
   state = {
-    searchBy: 'keyword',
+    searchBy: 'article',
     query: '',
     searchPlaceholder: 'Search article by keyword'
   };
 
   handleChange = (event) => {
     if (event.target.name === 'searchBy') {
-      this.setState({
-        [event.target.name]: event.target.value,
-        searchPlaceholder: `Search article by ${event.target.value}`
-      });
+      if (event.target.value === 'article') {
+        this.setState({
+          searchBy: 'article',
+          searchPlaceholder: 'Search article by keyword'
+        });
+      } else {
+        this.setState({
+          [event.target.name]: event.target.value,
+          searchPlaceholder: `Search article by ${event.target.value}`
+        });
+      }
     } else {
       this.setState({ [event.target.name]: event.target.value });
     }
@@ -89,7 +96,7 @@ class HeaderSearch extends Component {
                 <MenuItem value='' disabled>
                   Placeholder
                 </MenuItem>
-                <MenuItem value={'keyword'}>Article</MenuItem>
+                <MenuItem value={'article'}>Keyword</MenuItem>
                 <MenuItem value={'tag'}>Tag</MenuItem>
                 <MenuItem value={'author'}>Author</MenuItem>
               </Select>

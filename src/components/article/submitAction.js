@@ -7,9 +7,9 @@ const submitAction = (data) => {
   } = data;
   const formData = new FormData();
   formData.append('image', imageUrl);
-  formData.append('description', description);
-  formData.append('title', title);
-  formData.append('body', body);
+  formData.append('description', description.trim());
+  formData.append('title', title.trim());
+  formData.append('body', body.trim());
   return formData;
 };
 

@@ -21,6 +21,7 @@ import likeOrDislikeArticle from './article/likeOrDislike';
 import follow from './follow/follow';
 import updateArticleReducer from './article/updateArticle';
 import listArticle from './article/landingPage/article';
+import articleTags from './article/landingPage/articleByTag';
 
 /**
  * @desc combines all the reducers
@@ -45,4 +46,5 @@ export default combineReducers({
   follow,
   updateArticleReducer,
   listArticle,
+  articleTags,
 });

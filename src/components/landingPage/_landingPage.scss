@@ -1,6 +1,7 @@
 .index {
   position: relative;
   padding-bottom: 20rem;
+  overflow: hidden;
 
   figure {
     position: relative;
@@ -52,15 +53,35 @@
     background-position: 0 0;
     background-size: cover;
 
+    // Small devices (landscape phones, 576px and up)
+    @media (max-width: 576px) {
+      & {
+        padding: 2rem;
+        height: auto;
+
+        img {
+          height: 30rem;
+        }
+      }
+    }
+
     img {
       position: absolute;
       right: 0;
       top: 0;
+
     }
 
     .hero-inner {
       display: inline-block;
       margin-bottom: 15rem;
+
+      // Small devices (landscape phones, 576px and up)
+    @media (max-width: 576px) {
+      & {
+        margin: 25rem 0 5rem;
+      }
+    }
 
       h1 {
         font-size: $hero-font-size;
@@ -68,6 +89,15 @@
         margin-top: -1rem;
         padding-top: 0;
         width: 80rem;
+
+        // Small devices (landscape phones, 576px and up)
+        @media (max-width: 576px) {
+          & {
+            width: 100%;
+            padding: 1px;
+            font-size: 4rem;
+          }
+        }
       }
 
       p {
@@ -75,23 +105,41 @@
         width: 60rem;
         margin-top: 2rem;
         letter-spacing: 0;
-        line-height: 2.5rem
+        line-height: 2.5rem;
+
+        // Small devices (landscape phones, 576px and up)
+        @media (max-width: 576px) {
+          & {
+            width: 100%;
+          }
+        }
       }
     }
   }
 
   .l-ah-3 {
-    padding: 10rem 0 8rem;
+    padding: 10rem 0 15rem;
     border-bottom: 1px solid $dark-gray;
 
     .l-ah-bg-card {
-      height: 60rem;
+      height: 30rem;
       padding: 2rem;
+      figure {
+        margin-bottom: 0;
+      }
 
       figcaption {
+        background-color: $white;
+        padding: 2rem 2rem;
+        .link {
+          h5 {
+            font-size: $big-font-size;
+          }
+          p {
+            line-height: 2.5rem;
+          }
 
-        p {
-          line-height: 2.5rem;
+
         }
       }
     }
@@ -102,25 +150,16 @@
 
       .l-ah-sm-card {
         border-bottom: 1px solid $light-gray;
-        padding-bottom: 2rem;
-
-        figure {
-          img {
-            width: 18rem;
-          }
-        }
-
-        &:last-child {
-          margin: 0;
-          border-bottom: 0;
-          padding: 0;
-        }
         margin-bottom: 1rem;
+
         figure {
-          margin: 0;
+          width: 10rem;
+          height: 10rem;
         }
+
         figcaption {
           padding: 0 2rem;
+          flex-grow: 1;
         }
       }
     }
@@ -141,6 +180,19 @@
       padding: 2rem;
       box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.17);
       border-bottom: 10px solid $darker-gray;
+
+      figure {
+        height: 32rem;
+      }
+
+      // Small devices (landscape phones, 576px and up)
+      @media (max-width: 576px) {
+        & {
+          figure {
+            border: 1px solid #000;
+          }
+        }
+      }
 
       figcaption {
         padding: 2rem 0 0;
@@ -168,18 +220,18 @@
 
         &:hover {
           background-color: $light-gray;
-          cursor: pointer;
         }
 
         figure {
           margin: 0;
-          img {
-            width: 23rem;
-          }
+          width: 8rem;
+          height: 8rem;
+
         }
 
         figcaption {
           padding-left: 1rem;
+          flex-grow: 1;
 
           h5 {
           }
@@ -195,10 +247,8 @@
     .slide-card {
       padding: 0 1rem;
       figure {
-        overflow: hidden;
-        img {
-          transition: transform 1s;
-        }
+        border: 1px solid $darker-gray;
+        height: 25rem;
       }
     }
 
@@ -227,6 +277,20 @@
     color: lighten($color: #000000, $amount: 0);
     color: $primary;
     display: flex;
+
+    // Small devices (landscape phones, 576px and up)
+    @media (max-width: 576px) {
+      & {
+        text-align: left;
+        display: block;
+        padding-left: 3rem;
+
+
+        h2 {
+          text-align: left;
+        }
+      }
+    }
 
     &::after, &::before {
       content: "";

@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import propTypes from 'prop-types';
 import Loader from 'react-loader';
-import { Redirect } from 'react-router-dom';
+
 
 // modules
 import Header from '../../reusables/header/Header';
@@ -142,7 +142,7 @@ class ViewArticle extends Component {
                   <div className='col-md-12'>
                     <div className='col-md-10'>
                       <div className='l-ah-detail-title'>
-                        <p>{title}</p>
+                        <p>{ReactHtmlParser(title)}</p>
                       </div>
                     </div>
                     <div className='col-md-12'>
@@ -151,7 +151,7 @@ class ViewArticle extends Component {
                       </div>
                     </div>
                     <div className='col-md-10 offset-md-1'>
-                      <Share shareUrl={shareUrl} title={title} />
+                      <Share shareUrl={shareUrl} title={ReactHtmlParser(title)} />
                       <div className='l-ah-article-body'>
                         <div>{ReactHtmlParser(body)}</div>
                       </div>

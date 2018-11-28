@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 // third-party library
 import PropTypes from 'prop-types';
+import ReactHtmlParser from 'react-html-parser';
 /**
  * @desc renders searched artcle
  * @return author
@@ -21,8 +22,8 @@ class SearchArticle extends Component {
         <img className="img-fluid" src={imageUrl} alt="mdblog image"/>
       </figure>
       <figcaption>
-        <h5>{title}</h5>
-        <p>{description}</p>
+        <h5>{ReactHtmlParser(title)}</h5>
+        <p>{ReactHtmlParser(description)}</p>
       </figcaption>
       </div>
       </a>

@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 
 // components
 import LoginForm from './LoginForm';
+import Logo from '../reusables/logo/Logo';
 
 /**
  * @param {object} props
@@ -18,7 +19,8 @@ const LoginPage = props => (
           <div className="container">
             <div className="row auth-h d-flex align-items-center">
               <div className="col-md-6 offset-md-3 text-center login-wrap">
-               <img src="/images/logo.png" alt="logo"/>
+               {/* <img src="/images/logo.png" alt="logo"/> */}
+               <Logo/>
                 <div className="row">
                   <div className="col-md-10 offset-md-1">
                     <div className="form-wrap">

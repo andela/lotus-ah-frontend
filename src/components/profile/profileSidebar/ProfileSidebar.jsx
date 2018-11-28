@@ -32,12 +32,12 @@ const ProfileSidebar = ({
         </h5>
         <p>view all</p>
       </div>
-      {dummyArticle.getListArticle(
+      {/* {dummyArticle.getListArticle(
         dummyArticle.recentTitle,
         dummyArticle.bookmarkBody,
         dummyArticle.recentImage,
         3
-      )}
+      )} */}
     </div>
     <div className='profile-follow-wrap'>
       <div className='sidebar-title d-flex'>

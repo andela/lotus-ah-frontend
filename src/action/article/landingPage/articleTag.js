@@ -5,16 +5,18 @@ import http from 'axios';
 import {
   GET_POPULAR_TAGS,
   GET_POPULAR_TAGS_SUCCESS,
-  GET_HERO_ARTICLE_FAILURE
+  GGET_POPULAR_TAGS_FAILURE
 } from '../../../actionTypes/landingPage';
 
-const fetchAllTagsSuccess = articleData => ({
+const fetchAllTagsSuccess = result => ({
   type: GET_POPULAR_TAGS_SUCCESS,
-  payload: articleData
+  payload: {
+    tags: result.tag
+  }
 });
 
 const fetchAllTagsFailure = errorMessage => ({
-  type: GET_HERO_ARTICLE_FAILURE,
+  type: GGET_POPULAR_TAGS_FAILURE,
   payload: errorMessage
 });
 
@@ -29,7 +31,7 @@ const fetchAllTags = () => (dispatch) => {
       dispatch(fetchAllTagsSuccess(response.data));
     })
     .catch(({ response }) => {
-      dispatch(fetchAllTagsFailure(response.data.message));
+      dispatch(fetchAllTagsFailure(response));
     });
 };
 

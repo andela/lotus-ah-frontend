@@ -107,7 +107,7 @@ class Header extends Component {
           <div>
             <ul className="nav justify-content-end">
                 <li className="nav-item">
-                    <Link to={ `/profile/${user.firstname}_${user.id}` } className="nav-link" href="#">{user.firstname}</Link>
+                    <a href={ `/profile/@${user.firstname}_${user.id}` } className="nav-link" >{user.firstname}</a>
                 </li>
                 <li className='nav-item'>
                   <Link className='nav-link' to='/'>

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
+import ReactHtmlParser from 'react-html-parser';
 
 /**
  * @desc Dropdown for use actions
@@ -20,6 +21,7 @@ const NotificationItem = ({ notification, onClick }) => {
     title,
     slug,
   ] = notification.message.split(',');
+  console.log(notification, 'herejejhehje');
   TimeAgo.addLocale(en);
   const timeAgo = new TimeAgo('ru-RU');
   return (
@@ -38,9 +40,9 @@ const NotificationItem = ({ notification, onClick }) => {
             <Link
               to={`/notify_action/${initiatorId}?notify=profile&notificationId=${notification.id}`}
               className="user p-0 font-italic d-inline">
-              { initiator }
+              { ReactHtmlParser(initiator) }
             </Link>
-            <span className="px-2 d-inline">{ message }</span>,
+            <span className="px-2 d-inline">{ ReactHtmlParser(message) }</span>,
             { notification.type !== 'follow'
               && <Link
                       to={`/notify_action/${slug}?notify=viewarticle&notificationId=${notification.id}`}

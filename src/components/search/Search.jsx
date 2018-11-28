@@ -133,7 +133,11 @@ class Search extends Component {
           <div className='follow-title'>
             <h3>Tagged {tag.name}</h3>
           </div>
-          <div className='col-md-12 tag-search-body pad-search'>
+          {(tag.Articles.length === 0)
+            ? <div className='follow-title pad-body'>
+               <h3>{`There is no article tagged ${tag.name}`}</h3>
+             </div>
+            : <div className='col-md-12 tag-search-body pad-search'>
             {tag.Articles.map(article => (
               <FilterArticle
                 key={article.id}
@@ -143,7 +147,7 @@ class Search extends Component {
                 slug={article.slug}
               />
             ))}
-          </div>
+          </div>}
         </div>
       ));
     }
@@ -154,7 +158,11 @@ class Search extends Component {
           <div className='follow-title'>
             <h3>Authored by {author.username}</h3>
           </div>
-          <div className='col-md-12 tag-search-body pad-search'>
+          {(author.Articles.length === 0)
+            ? <div className='follow-title pad-body'>
+                <h3>{`There is no article created by ${author.username}`}</h3>
+              </div>
+            : <div className='col-md-12 tag-search-body pad-search'>
             {author.Articles.map(article => (
               <FilterArticle
                 key={article.id}
@@ -164,7 +172,7 @@ class Search extends Component {
                 slug={article.slug}
               />
             ))}
-          </div>
+          </div>}
         </div>
       ));
     }

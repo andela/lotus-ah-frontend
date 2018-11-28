@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Editable from 'react-contenteditable';
 import Moment from 'react-moment';
+import ReactHtmlParser from 'react-html-parser';
 
 // action
 import { userCommentRequest, commentInit } from '../../../action/comment';
@@ -33,8 +34,12 @@ export class Comment extends Component {
       showEditor, onClick, auth, comments
     } = this.props;
     const { props } = this;
-
-    const authenticatedUser = auth.user;
+    const loggedUser = {
+      firstname: '',
+      username: ''
+    };
+    const authUser = auth.user;
+    const authenticatedUser = authUser.firstname !== undefined ? JSON.parse(auth.user) : loggedUser;
     return (
       <div className='l-ah-comment'>
         <div className='container'>
@@ -45,7 +50,7 @@ export class Comment extends Component {
                   <div className='thumbnail' />
                   <div className='user-full-name'>
                     <p>{authenticatedUser.firstname}</p>
-                    <p>@{authenticatedUser.firstname}</p>
+                    <p>@{authenticatedUser.username}</p>
                   </div>
                   <div className='comment-count'>
                     <p>
@@ -56,7 +61,7 @@ export class Comment extends Component {
                   </div>
                 </div>
                 <p className='comment-text' onClick={onClick}>
-                  Comment here ...
+                  Click to comment here ...
                 </p>
                 <div className='comment-input'>
                   {showEditor && (
@@ -78,7 +83,7 @@ export class Comment extends Component {
                     </div>
                   </div>
                   <div className='comment-body'>
-                    <p>{element.commentBody}</p>
+                    <p>{ReactHtmlParser(element.commentBody)}</p>
                     <div className='comment-reaction'>
                       <Link to={`/comments/${element.id}`}>
                         <p>

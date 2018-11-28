@@ -29,28 +29,29 @@ const dummmy = {
     */
   getListArticle: (articles) => {
     const articleList = articles.map((article, i) => (
-   <Link key={i} to={`/viewarticle/${article.slug}/`}><Article>
-      <div className="l-ah-sm-card d-flex">
-            <FeatureImage
-              imageUrl={article.imageUrl}
-            />
-            <figcaption>
-            <ArticleContent
-              titleElement={article.title}
-              bodyElement={ article.description }
-            />
-            <ArticleDetails
-              type="details-sm"
-              list="false"
-              readTime="5min read"
-              publishedDate="5 Nov"
-              authorThumbnail=""
-              authorUsername="Mindsworth"
-            />
-          </figcaption>
+   <Article key={i}>
+    <div className="l-ah-sm-card d-flex article-link">
+      <FeatureImage
+        imageUrl={ article.imageUrl }
+      />
+      <figcaption>
+        <Link to={`/viewarticle/${article.slug}/`}>
+          <ArticleContent
+            titleElement={article.title.length > 35 ? `${article.title.substring(0, 34)}...` : article.title}
+            bodyElement={article.description.length > 35 ? `${article.description.substring(0, 34)}...` : article.description}
+          />
+        </Link>
+        <ArticleDetails
+          type="details-sm"
+          list="false"
+          readTime={article.timeToRead}
+          publishedDate={article.createdAt}
+          authorThumbnail=""
+          authorUsername={article.user.username}
+        />
+      </figcaption>
     </div>
   </Article>
-  </Link>
     ));
     return articleList;
   }

@@ -35,7 +35,7 @@ h2 {
 h3 {
   font-size: $title-font-size;
   font-weight: 700;
-  
+
 }
 
 h4 {
@@ -53,4 +53,15 @@ h5 {
   height: 4rem;
   background-color: $dark-gray;
   border-radius: 50%;
+}
+
+.article-link {
+  color: $dark;
+}
+
+a {
+  color: $dark;
+  &:hover {
+    color: $dark;
+  }
 }
