@@ -2,10 +2,10 @@
 import React, { Component } from 'react';
 
 // third-party libraries
-import ReactHtmlParser from 'react-html-parser';
 import propTypes from 'prop-types';
 import Loader from 'react-loader';
 import { Redirect } from 'react-router-dom';
+import escapeHtml from '../../../helpers/escapeHtml';
 
 // modules
 import Header from '../../reusables/header/Header';
@@ -16,6 +16,8 @@ import Footer from '../../reusables/footer/Footer';
 import UserAbout from '../../reusables/userAbout/UserAbout';
 import Comment from '../../reusables/comment/Comment';
 import Button from '../../reusables/button/Button';
+
+// const htmlToReactParser = new Parser();
 
 /**
  * @export
@@ -70,17 +72,24 @@ class ViewArticle extends Component {
     }
   };
 
+  htmlEntities = str => String(str)
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"');
+
   showEdit = () => {
     this.setState({
       editArticle: true
     });
   }
 
+
   render() {
     const {
-      title,
+      title = '',
       imageUrl,
-      body,
+      body = '',
       userId,
       slug,
       rating,
@@ -142,7 +151,7 @@ class ViewArticle extends Component {
                   <div className='col-md-12'>
                     <div className='col-md-10'>
                       <div className='l-ah-detail-title'>
-                        <p>{title}</p>
+                        <p>{escapeHtml(this.htmlEntities(title))}</p>
                       </div>
                     </div>
                     <div className='col-md-12'>
@@ -153,7 +162,7 @@ class ViewArticle extends Component {
                     <div className='col-md-10 offset-md-1'>
                       <Share shareUrl={shareUrl} title={title} />
                       <div className='l-ah-article-body'>
-                        <div>{ReactHtmlParser(body)}</div>
+                        <div>{ escapeHtml(this.htmlEntities(body)) }</div>
                       </div>
                     </div>
                     <Reaction slug={slug} rating={rating} reactions={this.props.reactions} id={id}

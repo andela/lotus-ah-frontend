@@ -129,7 +129,8 @@ class CreateArticlePage extends Component {
 
   handleTitleOnChange = (event) => {
     const { article } = this.state;
-    const data = { ...article, title: event.target.value };
+    const title = event.target.value;
+    const data = { ...article, title };
     this.setState({
       article: data,
     });
