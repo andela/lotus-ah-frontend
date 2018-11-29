@@ -7,6 +7,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Editable from 'react-contenteditable';
 import Moment from 'react-moment';
+import escapeHtml from '../../../helpers/escapeHtml';
+
 
 // action
 import { userCommentRequest, commentInit } from '../../../action/comment';
@@ -27,6 +29,12 @@ export class Comment extends Component {
       props.comment(details);
     }
   };
+
+  htmlEntities = str => String(str)
+  .replace(/&amp;/g, '&')
+  .replace(/&lt;/g, '<')
+  .replace(/&gt;/g, '>')
+  .replace(/&quot;/g, '"');
 
   render() {
     const {
@@ -78,7 +86,7 @@ export class Comment extends Component {
                     </div>
                   </div>
                   <div className='comment-body'>
-                    <p>{element.commentBody}</p>
+                    <p>{escapeHtml(this.htmlEntities(element.commentBody))}</p>
                     <div className='comment-reaction'>
                       <Link to={`/comments/${element.id}`}>
                         <p>
