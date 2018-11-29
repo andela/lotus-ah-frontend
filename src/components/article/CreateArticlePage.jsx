@@ -20,7 +20,7 @@ import submitAction from './submitAction';
 /**
  * @class CreateArticle
  * @extends {Component}
- * @param {event} body
+ * @param {event} event
  */
 class CreateArticlePage extends Component {
   state = {
@@ -64,6 +64,9 @@ class CreateArticlePage extends Component {
     }
   }
 
+  /**
+ * @param {event} event
+ */
   handleUpdateSubmit = (event) => {
     event.preventDefault();
     const value = queryString.parse(this.props.location.search);
@@ -85,6 +88,9 @@ class CreateArticlePage extends Component {
     });
   };
 
+  /**
+ * @param {event} event
+ */
  handleEnterKey = (event) => {
    const { tags } = this.state;
    const tagName = event.target.value;
@@ -154,6 +160,9 @@ class CreateArticlePage extends Component {
     });
   };
 
+  /**
+ * @param {event} body
+ */
   handleEditorChange = (body) => {
     const { article } = this.state;
     const data = { ...article, body };
@@ -315,6 +324,7 @@ CreateArticlePage.propTypes = {
   fetchSingleArticle: propTypes.func,
   findOrCreateTag: propTypes.func,
   location: propTypes.object,
-  loginUser: propTypes.object
+  loginUser: propTypes.object,
+  auth: propTypes.object
 };
 export default CreateArticlePage;

@@ -29,7 +29,7 @@ class ProfileSidebar extends Component {
     } = this.props;
     return (
       <div className="profile-sidebar">
-        <ProfileIntro bio={ dummyArticle.recentBodySmall } />
+        <ProfileIntro />
         <ProfileEdit
           onchange={ onChange }
           formData={ formData }

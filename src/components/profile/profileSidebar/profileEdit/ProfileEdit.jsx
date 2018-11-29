@@ -18,6 +18,8 @@ export default class ProfileEdit extends Component {
       bio
     } = this.props.formData;
 
+    console.log('Hello', this.props.openModal);
+
     return (
       <div className={ `profile-edit-cont ${this.props.openModal && 'edit-positioning'}` }>
         <input
@@ -44,7 +46,7 @@ export default class ProfileEdit extends Component {
           disabled />
         <textarea
           name="bio"
-          value={ bio }
+          value={ bio !== null ? '' : bio }
           onChange={ this.props.onchange }
           placeholder="Bio"
           className="textarea form-control"

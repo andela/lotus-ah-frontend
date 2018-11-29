@@ -26,7 +26,7 @@ class ProfileIntro extends Component {
         <p className="inner-title">Email:</p>
         <p>{ email }</p>
         <p className="inner-title">Bio:</p>
-        <p className="profile-bio">{ bio }</p>
+        <p className="profile-bio">{ bio !== null ? '...' : bio }</p>
         <p className="inner-title"><i className="fas fa-calendar-alt"></i>You Joined: <span>12 July, 2018</span></p>
       </div>
     );

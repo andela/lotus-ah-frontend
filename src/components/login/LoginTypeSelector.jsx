@@ -34,7 +34,7 @@ const LoginTypeSelector = props => {
         <div className="sign-up-card facebook">
             <a
                 className="d-flex align-items-center"
-                href="#" onClick={props.onClick}>
+                onClick={props.onClick}>
                 <i className="fas fa-envelope"/>
                 Sign up with Email
             </a>

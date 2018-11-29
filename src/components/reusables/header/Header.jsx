@@ -103,15 +103,15 @@ class Header extends Component {
           : <div className="dashboard-menu">
           <div>
             <div className="thumbnail">
-              {
-                user.imageUrl && <img className="img-fluid" src={user.imageUrl} alt=""/>
-              }
+            {
+              user.imageUrl && <img className="img-fluid" src={user.imageUrl} alt=""/>
+            }
             </div>
           </div>
           <div>
             <ul className="nav justify-content-end">
                 <li className="nav-item">
-                    <Link to={ `/profile/${user.username}_${user.id}` } className="nav-link" href="#">{user.username}</Link>
+                    <a href={ `/profile/@${user.username}_${user.id}` } className="nav-link" >{user.firstname}</a>
                 </li>
                 <li className='nav-item'>
                   <Link className='nav-link' to='/'>
@@ -121,6 +121,7 @@ class Header extends Component {
                 <li className='nav-item'>
                   <a className='nav-link' href='#' onClick={this.handleDropDown}>
                     <i className='fas fa-bell' data-toggle='notification' />
+                    Notification
                     {notificationCount > 0 && (
                       <span
                         className='notification-count'
@@ -137,18 +138,15 @@ class Header extends Component {
               <div className='icon' data-toggle='menu' onClick={this.handleDropDown}>
                 <div className='line' data-toggle='menu' />
               </div>
-            </div>
-            <NotificationDropdown
-              active={this.state.notification}
-              onClick={this.handleNotificationOnclick}
-              notifications={notificationsItems}
-              count={notificationCount}
-              markNotificationAsRead={markNotificationAsRead}
+              <Dropdown active={this.state.menu} />
+              <NotificationDropdown
+                active={this.state.notification}
+                onClick={this.handleNotificationOnclick}
+                notifications={notificationsItems}
+                count={notificationCount}
+                markNotificationAsRead={markNotificationAsRead}
               />
-            <Dropdown
-              active={this.state.active}
-              id={user.id}
-              username={user.username} />
+            </div>
           </div>
         }
         <div className='alert-position'>

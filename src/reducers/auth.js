@@ -37,6 +37,7 @@ const authReducer = (state = initialState.auth, action) => {
         isAuth: false,
       };
     case UPDATE_USER_PROFILE_SUCCESS:
+      console.log('I am here!');
       return {
         ...state,
         user: { ...action.payload.user },

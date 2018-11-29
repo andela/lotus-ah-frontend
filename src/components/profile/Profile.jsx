@@ -40,7 +40,8 @@ class Profile extends Component {
     const userName = username.split('_')[0];
     this.props.fetchUserProfile(userId).then(() => {
       const { userData } = this.props;
-      if (!loading.processing && userData.user.username !== userName) {
+      console.log(userData.user.username);
+      if (!loading.processing && `@${userData.user.username}` !== userName) {
         history.push('/not-found');
       }
     });
@@ -141,6 +142,7 @@ class Profile extends Component {
     const authUser = auth.user;
     const user = typeof (authUser) === 'object' ? authUser : JSON.parse(authUser);
     const { isAuth } = auth;
+    console.log('User==>', user);
 
     return (
       <div className="l-ah-profile">
@@ -165,10 +167,10 @@ class Profile extends Component {
                       loading={ loader.processing }
                       onChangeDP={ this.fileSelectedHandler }
                       loggedUser={ user }
-                      followersCount={followers.followersCount}
-                      followingCount={following.followingCount}
+                      followersCount={ followers.followersCount }
+                      followingCount={ following.followingCount }
                       profileImage={ displayImage }
-                      userData= { userData.user }
+                      userData={ userData.user }
                       openModal={ openModal }
                       onClickSave={ this.handleOnSaveBtnClick }
                       onOpenBtnClick={ this.handleOpenModal }

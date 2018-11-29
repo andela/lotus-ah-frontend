@@ -21,7 +21,8 @@ class Signup extends Component {
       isModalOpen: false,
     }
 
-    openModal = () => {
+    openModal = (event) => {
+      event.preventDefault();
       this.setState({
         isModalOpen: true
       });
