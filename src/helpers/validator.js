@@ -17,6 +17,7 @@ const validator = {
           validator[name]('');
         }
       }
+      return true;
     });
     return validator.errors;
   },
@@ -67,7 +68,7 @@ const validator = {
   name: () => {
     const firstname = validator.trimSpaces('firstname');
     const lastname = validator.trimSpaces('lastname');
-    const fullname = validator.requestsInput['fullname'];
+    const { fullname } = validator.requestsInput;
     const username = validator.trimSpaces('username');
     if (firstname && firstname.length < 3) {
       const error = 'firsname should be more than two characters';
@@ -77,11 +78,11 @@ const validator = {
       const error = 'lastname should be more than two characters';
       validator.errors.push({ message: error });
     }
-    if(fullname  && fullname.length < 4) {
+    if (fullname && fullname.length < 4) {
       const error = 'fullname should be more than three characters';
       validator.errors.push({ message: error });
     }
-    if(username  && username.length < 2) {
+    if (username && username.length < 2) {
       const error = 'username should be more than two characters';
       validator.errors.push({ message: error });
     }

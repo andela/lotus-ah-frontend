@@ -52,6 +52,7 @@
 
     .thumbnail {
       @extend .thumbnail;
+      overflow: hidden;
     }
 
     .nav {

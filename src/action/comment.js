@@ -10,9 +10,6 @@ import {
   INITIALIZE_COMMENTS,
 } from '../actionTypes/comment';
 
-// action
-import { authenticateUser } from './auth';
-
 /**
  * @param {object} data
  * @desc checking login loading
@@ -38,6 +35,7 @@ export function commentInit(data) {
 /**
  * @desc checking successful login
  * @returns {object} type
+ * @param {object} data
  */
 export function success(data) {
   return {

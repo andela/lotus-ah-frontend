@@ -55,4 +55,5 @@ const tagReducer = (state = initialState.tag, action) => {
       return state;
   }
 };
+
 export default tagReducer;

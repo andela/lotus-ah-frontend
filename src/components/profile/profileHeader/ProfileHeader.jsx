@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 // third party libraries
 import PropTypes from 'prop-types';
+import Loader from 'react-loader';
 
 /**
  * @class ProfileHeader
@@ -10,18 +11,49 @@ import PropTypes from 'prop-types';
  */
 class ProfileHeader extends Component {
   render() {
-    const { firstname, lastname, username } = this.props.userData;
-    const { followersCount, followingCount } = this.props;
+    const {
+      userData,
+      followersCount,
+      onClickSave,
+      onChangeDP,
+      followingCount,
+      onCloseBtnClick,
+      onOpenBtnClick,
+      profileImage,
+      loading
+    } = this.props;
+
+    const {
+      id,
+      firstname,
+      lastname,
+      username,
+    } = userData;
 
     return (
-      <div className='l-ah-profile-header'>
-        <div className='profile-section-one d-flex just'>
-          <div className='profile-image'>
-            <div className={`thumbnail ${this.props.openModal && 'z-positioning'}`} />
+      <div className="l-ah-profile-header">
+        <div className="profile-section-one d-flex just">
+          <div className="profile-image">
+            <div className=
+              {
+                `thumbnail ${this.props.openModal
+                && 'z-positioning thumbnail-olay'}`
+              }
+            >
+            <img src={ profileImage } className={
+              `img-fluid ${
+                profileImage === '' && 'img-fluid--hide'
+              }`
+            } alt={ `${firstname}_${lastname}` } />
+            <div className="thumbnail-olay--inner">
+              <label htmlFor="image" className="far fa-image"></label>
+              <input className="profile-image" type="file" name="image" id="image" onChange={ onChangeDP }/>
+            </div>
+            </div>
           </div>
-          <div className='user-details'>
-            <h3>{`${firstname} ${lastname}`}</h3>
-            <p>@{username}</p>
+          <div className="user-details">
+            <h3>{ `${firstname} ${lastname}` }</h3>
+            <p>{`@${username}`}</p>
           </div>
         </div>
         <div className='profile-section-two d-flex align-items-center'>
@@ -47,18 +79,38 @@ class ProfileHeader extends Component {
               Chat
             </p>
           </div>
-          <div className='profile-stat profile-edit-cta'>
-            {this.props.loggedUser.firstname === firstname && (
-              <p onClick={this.props.onOpenBtnClick}>
-                <i className='fas fa-pencil-alt' />
-                Edit profile
-              </p>
-            )}
-            <div className={`edit-ctn ${this.props.openModal && 'z-positioning'}`}>
-              <p className='edit-cancel' onClick={this.props.onCloseBtnClick}>
+          <div className="profile-stat profile-edit-cta">
+            {
+              this.props.loggedUser.id === id
+                && (
+                  <p onClick={ onOpenBtnClick }>
+                    <i className="fas fa-pencil-alt"></i>
+                    Edit profile
+                  </p>
+                )
+            }
+            <div
+              className={ `edit-ctn ${this.props.openModal
+                && 'z-positioning'}`}>
+              <p
+                className="edit-cancel"
+                onClick={ onCloseBtnClick }>
                 Cancel
               </p>
-              <p>Save changes</p>
+              <p
+                onClick={ onClickSave }>Save changes
+              </p>
+              {
+                loading
+                  && (
+                    <Loader
+                      color="#0FC86F"
+                      speed={1}
+                      length= {7}
+                      width= {5}
+                      className="spinner" />
+                  )
+              }
             </div>
           </div>
         </div>
@@ -74,7 +126,11 @@ ProfileHeader.propTypes = {
   openModal: PropTypes.bool,
   loggedUser: PropTypes.object,
   followersCount: PropTypes.number,
-  followingCount: PropTypes.number
+  followingCount: PropTypes.number,
+  onClickSave: PropTypes.func.isRequired,
+  onChangeDP: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  profileImage: PropTypes.string
 };
 
 export default ProfileHeader;

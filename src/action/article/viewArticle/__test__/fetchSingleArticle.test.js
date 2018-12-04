@@ -7,16 +7,13 @@ import MockAdapter from 'axios-mock-adapter';
 
 // Import Action types
 import {
-  FETCH_SINGLE_ARTICLE_FAILURE,
   FETCH_SINGLE_ARTICLE_SUCCESS,
   FETCH_SINGLE_ARTICLE_REQUEST
 
 } from '../../../../actionTypes/article';
 
 // action
-import
-fetchSingleArticle
-  from '../fetchSingleArticle';
+import fetchSingleArticle from '../fetchSingleArticle';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);

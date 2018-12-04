@@ -1,10 +1,11 @@
 // React libraries
 import React from 'react';
 // components
-import Logo from './Logo';
+import Logo from './reusables/logo/Logo';
 
 /**
  * @description function to update password
+ * @return {object} component
  */
 export default function ForgotPassword() {
   return (

@@ -35,7 +35,8 @@ const initialState = {
     user: {
       user: {}
     },
-    processing: false
+    processing: false,
+    isUpdated: false
   },
   reset: {},
   tag: {

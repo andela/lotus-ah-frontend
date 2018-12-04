@@ -8,8 +8,9 @@ import activateAccount from './signup/verifyEmail';
 import updateAccount from './signup/updateUser';
 import auth from './auth';
 import articleReducer from './article/createArticle';
-import fetchSingleArticleReducer from './article/fetchSingleArticle';
+import fetchSingleArticle from './article/fetchSingleArticle';
 import userProfile from './userProfile';
+import updateProfile from './updateProfile';
 import reset from './reset';
 import ratingArticle from './article/ratingArticle';
 import tagReducer from './tag/tag';
@@ -32,7 +33,7 @@ export default combineReducers({
   updateAccount,
   auth,
   createArticle: articleReducer,
-  fetchSingleArticleReducer,
+  fetchSingleArticle,
   userProfile,
   ratingArticle,
   reset,
@@ -44,5 +45,6 @@ export default combineReducers({
   likeOrDislikeArticle,
   follow,
   updateArticleReducer,
-  report
+  report,
+  updateProfile
 });

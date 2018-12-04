@@ -1,11 +1,16 @@
 // react libraries
 import React, { Component } from 'react';
+
+// third party libraries
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import completeUserRegistration from '../action/signup/update';
+
+// helpers
 import decodedToken from '../helpers/decodeToken';
 
 // Modules importations
-import Logo from './Logo';
+import completeUserRegistration from '../action/signup/update';
+import Logo from './reusables/logo/Logo';
 import '../styles/_form.scss';
 import '../styles/_update.scss';
 
@@ -140,6 +145,13 @@ class UpdatePage extends Component {
     );
   }
 }
+
+UpdatePage.propTypes = {
+  props: PropTypes.object,
+  match: PropTypes.object,
+  dispatch: PropTypes.object
+};
+
 /**
  *
  * @param {object} state
@@ -151,5 +163,5 @@ function mapStateToProps(state) {
     updateRegistration
   };
 }
-const connectedUpdatePage = connect(mapStateToProps)(UpdatePage);
-export { connectedUpdatePage as UpdatePage };
+
+export default connect(mapStateToProps)(UpdatePage);

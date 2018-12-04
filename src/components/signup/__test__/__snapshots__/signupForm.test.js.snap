@@ -79,6 +79,7 @@ exports[`Renders the singup page should render the signup page 1`] = `
                 >
                   <a
                     className="d-flex align-items-center"
+                    href="https://lotus-ah-staging.herokuapp.com/api/v1/auth/facebook"
                   >
                     <i
                       className="fab fa-facebook"
@@ -92,6 +93,7 @@ exports[`Renders the singup page should render the signup page 1`] = `
                 >
                   <a
                     className="d-flex align-items-center"
+                    href="https://lotus-ah-staging.herokuapp.com/api/v1/auth/twitter"
                   >
                     <i
                       className="fab fa-twitter"
@@ -105,6 +107,7 @@ exports[`Renders the singup page should render the signup page 1`] = `
                 >
                   <a
                     className="d-flex align-items-center"
+                    href="https://lotus-ah-staging.herokuapp.com/api/v1/auth/google"
                   >
                     <i
                       className="fab fa-google"
@@ -118,7 +121,6 @@ exports[`Renders the singup page should render the signup page 1`] = `
                 >
                   <a
                     className="d-flex align-items-center"
-                    href="#"
                     onClick={[Function]}
                   >
                     <i
