@@ -34,19 +34,25 @@ class Header extends Component {
   }
 
   handleDropDown = (event) => {
-    event.preventDefault();
     this.setState({
-      menu: false,
-      notification: false
+      [event.target.toggle]: false
     });
+    event.preventDefault();
+    Object.keys(this.state).map((item) => {
+      if (item.slice(0, -1) === 'notification') {
+        this.setState({
+          [item]: false,
+        });
+      }
+    });
+    console.log(this.state);
     this.openDropdown(event);
   }
 
   openDropdown = (event) => {
     const currentMenu = [event.target.dataset.toggle];
-    const show = currentMenu == 'menu' ? 'menu' : 'notification';
     this.setState({
-      [event.target.dataset.toggle]: !this.state[show]
+      [event.target.dataset.toggle]: !this.state[currentMenu]
     });
   }
 
@@ -116,12 +122,12 @@ class Header extends Component {
                 </li>
                 <li className='nav-item'>
                   <a className='nav-link' href='#' onClick={this.handleDropDown}>
-                    <i className='fas fa-bell' data-toggle='notification' />
+                    <i className='fas fa-bell' data-toggle='notification2' />
                     {notificationCount > 0 && (
                       <span
                         className='notification-count'
                         onClick={this.handleDropDown}
-                        data-toggle='notification'>
+                        data-toggle='notification2'>
                         {notificationCount}
                       </span>
                     )}
@@ -129,13 +135,13 @@ class Header extends Component {
                 </li>
               </ul>
             </div>
-            <div className='icon-wrap' data-toggle='menu'>
+            <div className='icon-wrap' data-toggle='notification1'>
               <div className='icon' data-toggle='menu' onClick={this.handleDropDown}>
-                <div className='line' data-toggle='menu' />
+                <div className='line' data-toggle='notification1' />
               </div>
-              <Dropdown active={this.state.menu} />
+              <Dropdown active={this.state.notification1} />
               <NotificationDropdown
-                active={this.state.notification}
+                active={this.state.notification2}
                 onClick={this.handleNotificationOnclick}
                 notifications={notificationsItems}
                 count={notificationCount}

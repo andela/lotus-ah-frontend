@@ -49,7 +49,6 @@ class LandingPage extends Component {
   render() {
     this.checkLogin();
     let { articles, popularTags } = this.props;
-    console.log(popularTags);
     const { notifications, markNotificationAsRead } = this.props;
 
     if (articles.length > 0) {
